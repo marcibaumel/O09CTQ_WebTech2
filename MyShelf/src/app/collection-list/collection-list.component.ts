@@ -8,11 +8,14 @@ import { CollectionElement } from '../models/collection-element.model';
   styleUrls: ['./collection-list.component.css'],
 })
 export class CollectionListComponent implements OnInit {
+
+
+
   collectionElements: CollectionElement[] = [
     {
       id: 1,
       title: 'Batman',
-      platform: CollectionElementPlatform.DVD,
+      platform: CollectionElementPlatform.PS3,
       about: 'sdghshshshshshsh',
       added: new Date(),
     },

@@ -2,7 +2,15 @@
   <mat-expansion-panel *ngFor="let element of collectionElements">
     <mat-expansion-panel-header>
       {{ element.title }}
-      <i class="bi bi-steam"></i>
+      <i *ngIf="element.platform === 0" class="bi bi-controller"></i>
+      <i *ngIf="element.platform === 1" class="bi bi-joystick"></i>
+      <i *ngIf="element.platform === 2" class="bi bi-nintendo-switch"></i>
+      <i *ngIf="element.platform === 3" class="bi bi-disc"></i>
+      <i *ngIf="element.platform === 4" class="bi bi-disc-fill"></i>
+      <i *ngIf="element.platform === 5" class="bi bi-calendar3-fill"></i>
+      <i *ngIf="element.platform === 6" class="bi bi-pc"></i>
+      <i *ngIf="element.platform === 7" class="bi bi-steam"></i>
+      <i *ngIf="element.platform === 8" class="bi bi-xbox"></i>
     </mat-expansion-panel-header>
     <p>{{ element.platform }}</p>
   </mat-expansion-panel>
