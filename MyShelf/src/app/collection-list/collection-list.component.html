@@ -14,5 +14,6 @@
     </mat-expansion-panel-header>
     <p><strong>About: </strong>{{ element.about }}</p>
     <p><strong>Added: </strong>{{ element.added.toLocaleDateString('en-ZA') }}</p>
+    <button mat-raised-button color="warn" (click)="onDelete(element.id)">DELETE</button>
   </mat-expansion-panel>
 </mat-accordion>
