@@ -2,16 +2,17 @@
   <mat-expansion-panel *ngFor="let element of collectionElements">
     <mat-expansion-panel-header>
       {{ element.title }}
-      <i *ngIf="element.platform === 0" class="bi bi-controller"></i>
-      <i *ngIf="element.platform === 1" class="bi bi-joystick"></i>
-      <i *ngIf="element.platform === 2" class="bi bi-nintendo-switch"></i>
-      <i *ngIf="element.platform === 3" class="bi bi-disc"></i>
-      <i *ngIf="element.platform === 4" class="bi bi-disc-fill"></i>
-      <i *ngIf="element.platform === 5" class="bi bi-calendar3-fill"></i>
-      <i *ngIf="element.platform === 6" class="bi bi-pc"></i>
-      <i *ngIf="element.platform === 7" class="bi bi-steam"></i>
-      <i *ngIf="element.platform === 8" class="bi bi-xbox"></i>
+      <i *ngIf="element.platform === 0" class="bi bi-playstation"> PS4</i>
+      <i *ngIf="element.platform === 1" class="bi bi-joystick"> PS3</i>
+      <i *ngIf="element.platform === 2" class="bi bi-nintendo-switch"> PSP</i>
+      <i *ngIf="element.platform === 3" class="bi bi-disc"> DVD</i>
+      <i *ngIf="element.platform === 4" class="bi bi-disc-fill"> Blu-ray</i>
+      <i *ngIf="element.platform === 5" class="bi bi-calendar3-fill"> VHS</i>
+      <i *ngIf="element.platform === 6" class="bi bi-pc"> PcGame</i>
+      <i *ngIf="element.platform === 7" class="bi bi-steam"> Steam</i>
+      <i *ngIf="element.platform === 8" class="bi bi-xbox"> Xbox</i>
     </mat-expansion-panel-header>
-    <p>{{ element.platform }}</p>
+    <p><strong>About: </strong>{{ element.about }}</p>
+    <p><strong>Added: </strong>{{ element.added.toLocaleDateString('en-ZA') }}</p>
   </mat-expansion-panel>
 </mat-accordion>
