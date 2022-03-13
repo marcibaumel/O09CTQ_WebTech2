@@ -12,6 +12,7 @@ app.get('/', (req, res) => {
   console.log("test")
 })
 
+//USE LOCAL MONGO_DB
 mongoose
   .connect("mongodb://localhost:27017/webtech2_db")
   .then(() => {
@@ -21,6 +22,8 @@ mongoose
     console.log("Connection failed");
   });
 
+
+//CORS Settigns
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
