@@ -3,9 +3,19 @@ const express = require("express");
 const collectionElement = require("../models/collection-element");
 const router = express.Router();
 
-router.get("", (req, res, next) => {
+router.get("/test", (req, res, next) => {
   return res.status(200).json({
     message: "Element get",
+  });
+});
+
+router.get("", (req, res, next) => {
+  collectionElement.find().then((documents) => {
+    console.log(documents);
+    return res.status(200).json({
+      message: "Elements fetched succesfully",
+      collectionElement: documents,
+    });
   });
 });
 
