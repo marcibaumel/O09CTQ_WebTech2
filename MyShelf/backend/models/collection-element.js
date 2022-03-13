@@ -4,7 +4,7 @@ const collectionElementSchema = mongoose.Schema({
   title: { type: String, required: true },
   platform: { type: String, default: "No content" },
   about: { type: String, default: "No content", required: true },
-  added: { type: Date, required: true },
+  added: { type: String,  default: new Date() },
 
   //creator: {type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }
 });

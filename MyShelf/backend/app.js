@@ -8,9 +8,13 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-  console.log("test")
-})
+/* app.use("/api", (req, res, next) => {
+
+  res.status(200).json({
+    message: "Get succesfully",
+  });
+
+}) */
 
 //USE LOCAL MONGO_DB
 mongoose
@@ -37,6 +41,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api/elements", collectionElementRoute);
+app.use("/api/collection", collectionElementRoute);
 
 module.exports = app;
