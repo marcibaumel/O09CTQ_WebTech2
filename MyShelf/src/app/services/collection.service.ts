@@ -34,6 +34,31 @@ export class CollectionServices {
       });
   }
 
+  getCollectionElements() {
+    this.http
+      .get<{ message: string; collectionElement: any }>('http://localhost:3000/api/collection')
+      .pipe(
+        map((collectionElementData) => {
+          return collectionElementData.collectionElement.map((element) => {
+            //console.log(element.title);
+            return {
+              title: element.title,
+              about: element.about,
+              platform: element.platform,
+              added: element.added,
+              id: element._id,
+            };
+          });
+        })
+      )
+      .subscribe((transformedElements) => {
+        this.collectionElements = transformedElements;
+        this.collectionElementsUpdated.next([...this.collectionElements]);
+      });
+  }
 
+  getCollectionElementsUpdateListener() {
+    return this.collectionElementsUpdated.asObservable();
+  }
 
 }

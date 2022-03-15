@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { CollectionElementPlatform } from '../models/collection-element-platform.enum';
 import { CollectionElement } from '../models/collection-element.model';
+import { CollectionServices } from '../services/collection.service';
 
 @Component({
   selector: 'app-collection-list',
   templateUrl: './collection-list.component.html',
   styleUrls: ['./collection-list.component.css'],
 })
-export class CollectionListComponent implements OnInit {
+export class CollectionListComponent implements OnInit, OnDestroy {
 
 
-
+/*
   collectionElements: CollectionElement[] = [
     {
       id: 0,
@@ -48,17 +50,38 @@ export class CollectionListComponent implements OnInit {
       added: new Date(),
     },
   ];
+*/
 
-  collectionElementPlatformFormat(platform: number){
-    console.log(this.collectionElements[platform].platform);
-    return this.collectionElements[platform].platform;
-  }
+
+  elementPlatform: CollectionElementPlatform;
+  collectionElements: CollectionElement[]= [];
+  private collectionSub: Subscription;
 
   onDelete(elementId: number){
     console.log(this.collectionElements[elementId]);
+    console.log(this.collectionElements);
   }
 
-  constructor() {}
+  dateFormater(givenDate: string):Date{
+    return new Date(givenDate);
+  }
 
-  ngOnInit(): void {}
+  whatType(object: any){
+    return typeof object
+  }
+
+  constructor(private collectionService: CollectionServices) {}
+
+  ngOnDestroy(): void {
+    this.collectionSub.unsubscribe();
+  }
+
+  ngOnInit(): void {
+    this.collectionService.getCollectionElements();
+    this.collectionSub = this.collectionService.getCollectionElementsUpdateListener()
+    .subscribe((elements: CollectionElement[]) =>{
+      this.collectionElements = elements;
+    })
+
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CollectionElementPlatform } from '../models/collection-element-platform.enum';
 import { CollectionElement } from '../models/collection-element.model';
 import { CollectionServices } from '../services/collection.service';
 
