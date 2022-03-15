@@ -23,23 +23,30 @@ router.get("", (req, res, next) => {
 
 //ADD NEW ELEMENT
 router.post("", (req, res, next) => {
+  console.log("Ez itt a backend");
+
   const element = new collectionElement({
     title: req.body.title,
     platform: req.body.platform,
     about: req.body.about,
     added: req.body.added,
   });
-  element.save().then((createdElement) => {
-    console.log("Element added " + element._id);
-    res.status(201).json({
-      message: "Element added successfully!",
-    });
-  }).catch(error => {
-    res.status(500).json({
-      message: "Something wrong!",
+
+  element
+    .save()
+    .then((createdElement) => {
+      console.log("Element added " + element._id);
+      res.status(201).json({
+        message: "Element added successfully!",
+      });
     })
-  });
+    .catch((error) => {
+      res.status(500).json({
+        message: "Something wrong with the backend!",
+      });
+    });
 });
+
 
 //DELETE AN ELEMENT
 router.delete("/:id", (req, res, next) => {

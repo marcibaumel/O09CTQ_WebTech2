@@ -14,7 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import { CollectionListComponent } from './collection-list/collection-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CollectionCreateComponent } from './collection-create/collection-create.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -29,6 +29,7 @@ import { CollectionCreateComponent } from './collection-create/collection-create
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     MatToolbarModule,

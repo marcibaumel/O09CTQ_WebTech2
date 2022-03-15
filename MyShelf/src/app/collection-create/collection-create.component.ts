@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CollectionElement } from '../models/collection-element.model';
+import { CollectionServices } from '../services/collection.service';
 
 @Component({
   selector: 'app-collection-create',
@@ -9,6 +10,8 @@ import { CollectionElement } from '../models/collection-element.model';
 })
 export class CollectionCreateComponent implements OnInit {
   element: CollectionElement;
+  event = new Date();
+
   platforms: String[] = [
     'PS4',
     'PS3',
@@ -23,23 +26,25 @@ export class CollectionCreateComponent implements OnInit {
 
   form: FormGroup;
 
-
-  onSaveElement(){
+  onSaveElement() {
     if (this.form.invalid) {
-      console.log('Something wrong!')
+      console.log('Something wrong with the form!');
       return;
     }
-    this.element={
-      id: 4,
-      title: this.form.value.title,
-      platform: this.form.value.platform,
-      about: this.form.value.about,
-      added: new Date(),
-    }
-    console.log(this.element);
+
+    console.log(this.form.value.platform);
+    //console.log(this.form.value.added);
+
+    this.collectionElementService.addElement(
+      this.form.value.title,
+      this.form.value.platform,
+      this.form.value.about,
+      //this.event.toString()
+    );
+    //this.form.reset();
   }
 
-  constructor() {}
+  constructor(public collectionElementService: CollectionServices) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
