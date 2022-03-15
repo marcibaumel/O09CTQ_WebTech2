@@ -10,12 +10,11 @@ import { CollectionElement } from '../models/collection-element.model';
 export class CollectionServices {
 
   private collectionElements: CollectionElement[] = [];
-  private postsUpdated = new Subject<CollectionElement[]>();
+  private collectionElementsUpdated = new Subject<CollectionElement[]>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
   addElement(title: string, platform: CollectionElementPlatform, about: string) {
-
     let date = new Date()
 
     const element: CollectionElement = { id: null, title: title, about:about, platform:platform, added: date };
@@ -26,7 +25,7 @@ export class CollectionServices {
       )
       .subscribe((responseData) => {
         const id = responseData.collectionElementId;
-        console.log(responseData.message, id.toString());
+        console.log(responseData.message);
         /*
         post.id = id;
         this.posts.push(post);
@@ -34,6 +33,7 @@ export class CollectionServices {
         this.router.navigate(["/"]);
       });
   }
+
 
 
 }
