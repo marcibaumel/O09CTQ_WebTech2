@@ -1,20 +1,58 @@
 <mat-accordion>
   <mat-expansion-panel *ngFor="let element of collectionElements">
     <mat-expansion-panel-header>
-      {{ element.title }}
-      <span class="spacer"></span>
-      <i *ngIf="element.platform.toString() === 'PS4'"  class="bi bi-playstation"> PS4 </i>
-      <i *ngIf="element.platform.toString() === 'PS3'" class="bi bi-joystick"> PS3</i>
-      <i *ngIf="element.platform.toString() === 'PSP'" class="bi bi-nintendo-switch"> PSP</i>
-      <i *ngIf="element.platform.toString() === 'DVD'" class="bi bi-disc"> DVD</i>
-      <i *ngIf="element.platform.toString() === 'BLUERAY'" class="bi bi-disc-fill"> Blu-ray</i>
-      <i *ngIf="element.platform.toString() === 'VHS'" class="bi bi-calendar3-fill"> VHS</i>
-      <i *ngIf="element.platform.toString() === 'PCGAME'" class="bi bi-pc"> PcGame</i>
-      <i *ngIf="element.platform.toString() === 'STEAM'" class="bi bi-steam"> Steam</i>
-      <i *ngIf="element.platform.toString() === 'XBOX'" class="bi bi-xbox"> Xbox</i>
+      <mat-panel-title>
+        {{ element.title }}
+      </mat-panel-title>
+      <mat-panel-description>
+        <i
+          *ngIf="element.platform.toString() === 'PS4'"
+          class="bi bi-playstation"
+        >
+          PS4
+        </i>
+        <i *ngIf="element.platform.toString() === 'PS3'" class="bi bi-joystick">
+          PS3</i
+        >
+        <i
+          *ngIf="element.platform.toString() === 'PSP'"
+          class="bi bi-nintendo-switch"
+        >
+          PSP</i
+        >
+        <i *ngIf="element.platform.toString() === 'DVD'" class="bi bi-disc">
+          DVD</i
+        >
+        <i
+          *ngIf="element.platform.toString() === 'BLUERAY'"
+          class="bi bi-disc-fill"
+        >
+          Blu-ray</i
+        >
+        <i
+          *ngIf="element.platform.toString() === 'VHS'"
+          class="bi bi-calendar3-fill"
+        >
+          VHS</i
+        >
+        <i *ngIf="element.platform.toString() === 'PCGAME'" class="bi bi-pc">
+          PcGame</i
+        >
+        <i *ngIf="element.platform.toString() === 'STEAM'" class="bi bi-steam">
+          Steam</i
+        >
+        <i *ngIf="element.platform.toString() === 'XBOX'" class="bi bi-xbox">
+          Xbox</i
+        >
+      </mat-panel-description>
     </mat-expansion-panel-header>
     <p><strong>About: </strong>{{ element.about }}</p>
-    <p><strong>Added: </strong>{{dateFormater(element.added.toString()).toLocaleDateString("en-ZA") }}</p>
-    <button mat-raised-button color="warn" (click)="onDelete(element.id)">DELETE</button>
+    <p>
+      <strong>Added: </strong
+      >{{ dateFormater(element.added.toString()).toLocaleDateString("en-ZA") }}
+    </p>
+    <button mat-raised-button color="warn" (click)="onDelete(element.id.toString())">
+      DELETE
+    </button>
   </mat-expansion-panel>
 </mat-accordion>

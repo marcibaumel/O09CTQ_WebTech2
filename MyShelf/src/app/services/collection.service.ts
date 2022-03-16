@@ -26,10 +26,6 @@ export class CollectionServices {
       .subscribe((responseData) => {
         const id = responseData.collectionElementId;
         console.log(responseData.message);
-        /*
-        post.id = id;
-        this.posts.push(post);
-        this.postsUpdated.next([...this.posts]);*/
         this.router.navigate(["/"]);
       });
   }
@@ -59,6 +55,10 @@ export class CollectionServices {
 
   getCollectionElementsUpdateListener() {
     return this.collectionElementsUpdated.asObservable();
+  }
+
+  elementDeleteById(elementId: string){
+    return this.http.delete('http://localhost:3000/api/collection/' + elementId);
   }
 
 }

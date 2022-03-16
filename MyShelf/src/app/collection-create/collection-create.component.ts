@@ -50,7 +50,7 @@ export class CollectionCreateComponent implements OnInit {
   ngOnInit(): void {
     this.form = new FormGroup({
       title: new FormControl(null, {
-        validators: [Validators.required, Validators.minLength(3)],
+        validators: [Validators.required, Validators.minLength(3), Validators.maxLength(50)],
       }),
       platform: new FormControl(null, {
         validators: [Validators.required],

@@ -1,8 +1,8 @@
 <mat-card>
   <form [formGroup]="form" (submit)="onSaveElement()">
     <mat-form-field>
-      <input matInput type="text" formControlName="title" placeholder="Title" />
-      <mat-error *ngIf="form.get('title').invalid">Please enter the title (minimum 3 character length)</mat-error>
+      <input matInput type="text" formControlName="title" placeholder="Title" maxlength="50"/>
+      <mat-error *ngIf="form.get('title').invalid">Please enter the title (minimum 3, maximum 50 character length)</mat-error>
     </mat-form-field>
 
     <mat-form-field>
@@ -21,7 +21,7 @@
         formControlName="about"
         placeholder="About"
       ></textarea>
-      <mat-error *ngIf="form.get('about').invalid">"Please enter the about"</mat-error>
+      <mat-error *ngIf="form.get('about').invalid">"Please enter the about (wheer you bought the item, is it second handed, etc.)"</mat-error>
     </mat-form-field>
 
     <button mat-raised-button color="accent" type="submit">Save Post</button>
