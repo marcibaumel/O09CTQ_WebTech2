@@ -17,9 +17,10 @@ export class CollectionListComponent implements OnInit, OnDestroy {
   private collectionSub: Subscription;
 
   onDelete(elementId: string){
-    console.log(elementId);
-    this.collectionService.elementDeleteById(elementId);
-    //console.log(this.collectionElements);
+    this.collectionService.elementDeleteById(elementId).subscribe(() => {
+      this.collectionService.getCollectionElements()
+    });;
+
 
   }
 

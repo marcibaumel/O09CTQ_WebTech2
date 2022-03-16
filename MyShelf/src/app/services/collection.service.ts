@@ -25,7 +25,7 @@ export class CollectionServices {
       )
       .subscribe((responseData) => {
         const id = responseData.collectionElementId;
-        console.log(responseData.message);
+        //console.log(responseData.message);
         this.router.navigate(["/"]);
       });
   }
@@ -58,6 +58,7 @@ export class CollectionServices {
   }
 
   elementDeleteById(elementId: string){
+    console.log(elementId)
     return this.http.delete('http://localhost:3000/api/collection/' + elementId);
   }
 

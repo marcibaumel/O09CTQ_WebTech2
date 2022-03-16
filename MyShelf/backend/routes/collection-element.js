@@ -50,6 +50,7 @@ router.post("", (req, res, next) => {
 
 //DELETE AN ELEMENT
 router.delete("/:id", (req, res, next) => {
+  console.log('Delete has started');
   collectionElement.deleteOne({ _id: req.params.id }).then((result) => {
     console.log(result);
     if (result.deletedCount > 0) {
