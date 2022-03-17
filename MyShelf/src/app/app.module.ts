@@ -15,6 +15,8 @@ import { CollectionListComponent } from './collection-list/collection-list.compo
 import { AppRoutingModule } from './app-routing.module';
 import { CollectionCreateComponent } from './collection-create/collection-create.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SignupComponent } from './auth/signup/signup.component';
+import { LoginComponent } from './auth/login/login.component';
 
 
 
@@ -23,7 +25,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HeaderComponent,
     CollectionListComponent,
-    CollectionCreateComponent
+    CollectionCreateComponent,
+    SignupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

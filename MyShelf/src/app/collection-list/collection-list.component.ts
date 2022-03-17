@@ -20,8 +20,6 @@ export class CollectionListComponent implements OnInit, OnDestroy {
     this.collectionService.elementDeleteById(elementId).subscribe(() => {
       this.collectionService.getCollectionElements()
     });;
-
-
   }
 
   dateFormater(givenDate: string):Date{
