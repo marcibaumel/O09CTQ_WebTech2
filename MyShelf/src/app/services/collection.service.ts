@@ -17,7 +17,7 @@ export class CollectionServices {
   addElement(title: string, platform: CollectionElementPlatform, about: string) {
     let date = new Date()
 
-    const element: CollectionElement = { id: null, title: title, about:about, platform:platform, added: date };
+    const element: CollectionElement = { id: null, title: title, about:about, platform:platform, added: date, creator: null };
     this.http
       .post<{ message: string; collectionElementId: string }>(
         'http://localhost:3000/api/collection',

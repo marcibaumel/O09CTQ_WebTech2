@@ -34,15 +34,12 @@ export class CollectionCreateComponent implements OnInit {
     }
 
     console.log(this.form.value.platform);
-    //console.log(this.form.value.added);
 
     this.collectionElementService.addElement(
       this.form.value.title,
       this.form.value.platform,
       this.form.value.about,
-      //this.event.toString()
     );
-    //this.form.reset();
   }
 
   constructor(public collectionElementService: CollectionServices) {}

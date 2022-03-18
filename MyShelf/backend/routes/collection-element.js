@@ -30,6 +30,7 @@ router.post("", (req, res, next) => {
     platform: req.body.platform,
     about: req.body.about,
     added: req.body.added,
+    //creator: req.userData.userId
   });
 
   element

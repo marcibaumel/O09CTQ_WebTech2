@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { CollectionCreateComponent } from './collection-create/collection-create.component';
 import { CollectionListComponent } from './collection-list/collection-list.component';
 
 const routes: Routes = [
-  { path: '', component: CollectionListComponent },
-  { path: 'create', component: CollectionCreateComponent },
+  { path: '', component: CollectionListComponent, canActivate: [AuthGuard] },
+  { path: 'create', component: CollectionCreateComponent, canActivate: [AuthGuard] },
   { path: 'user/signup', component: SignupComponent },
   { path: 'user/login', component: LoginComponent },
 ];
@@ -15,6 +16,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [],
+  providers: [AuthGuard],
 })
 export class AppRoutingModule {}

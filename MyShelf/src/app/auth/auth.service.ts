@@ -32,7 +32,7 @@ export class AuthService{
       .post('http://localhost:3000/api/user/signup', authData)
       .subscribe((response) => {
         console.log(response);
-        this.router.navigate(['/']);
+        this.login(email,username,password);
       });
   }
 
@@ -82,6 +82,7 @@ export class AuthService{
   autoAuthUser() {
     const authInformation = this.getAuthData();
     if(!authInformation){
+      this.router.navigate(['/user/signup']);
       return null;
     }
     const now = new Date();

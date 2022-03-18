@@ -5,5 +5,6 @@ export interface CollectionElement{
   title: string,
   platform: CollectionElementPlatform,
   about: string,
-  added: Date
+  added: Date,
+  creator: string
 }
