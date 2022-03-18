@@ -18,6 +18,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthInterceptor } from 'src/auth-interceptor';
+import { CollectionSearchComponent } from './collection-search/collection-search.component';
 
 
 
@@ -28,7 +29,8 @@ import { AuthInterceptor } from 'src/auth-interceptor';
     CollectionListComponent,
     CollectionCreateComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    CollectionSearchComponent
   ],
   imports: [
     BrowserModule,
