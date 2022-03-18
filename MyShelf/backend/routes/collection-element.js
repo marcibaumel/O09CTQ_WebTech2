@@ -1,5 +1,6 @@
 const collectionElement = require("../models/collection-element");
 const checkAuth = require("../middleware/check-auth");
+var ObjectId = require('mongodb').ObjectID;
 const express = require("express");
 
 const router = express.Router();
@@ -13,13 +14,17 @@ router.get("/test", (req, res, next) => {
 
 //GET ALL ELEMENTS
 router.get("", checkAuth, (req, res, next) => {
-  collectionElement.find().then((documents) => {
-    console.log(documents);
-    return res.status(200).json({
-      message: "Elements fetched succesfully",
-      collectionElement: documents,
+  collectionElement
+    .find({
+      "creator": ObjectId(req.userData.userId)
+    })
+    .then((documents) => {
+      console.log(documents);
+      return res.status(200).json({
+        message: "Elements fetched succesfully",
+        collectionElement: documents,
+      });
     });
-  });
 });
 
 //ADD NEW ELEMENT
@@ -31,7 +36,7 @@ router.post("", checkAuth, (req, res, next) => {
     platform: req.body.platform,
     about: req.body.about,
     added: req.body.added,
-    creator: req.userData.userId
+    creator: req.userData.userId,
   });
 
   element
@@ -49,10 +54,9 @@ router.post("", checkAuth, (req, res, next) => {
     });
 });
 
-
 //DELETE AN ELEMENT
 router.delete("/:id", (req, res, next) => {
-  console.log('Delete has started');
+  console.log("Delete has started");
   collectionElement.deleteOne({ _id: req.params.id }).then((result) => {
     console.log(result);
     if (result.deletedCount > 0) {
