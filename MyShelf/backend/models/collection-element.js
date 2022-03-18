@@ -9,4 +9,4 @@ const collectionElementSchema = mongoose.Schema({
   //creator: {type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }
 });
 
-module.exports = mongoose.model("CollectionElements", collectionElementSchema);
+module.exports = mongoose.model("Collection_Elements", collectionElementSchema);

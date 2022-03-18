@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 const collectionElementRoute = require('./routes/collection-element')
-
+const userRoute = require('./routes/user')
 const app = express();
 
 app.use(bodyParser.json());
@@ -42,5 +42,6 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/collection", collectionElementRoute);
+app.use("/api/user", userRoute);
 
 module.exports = app;
