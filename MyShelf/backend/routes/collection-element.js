@@ -1,4 +1,5 @@
 const collectionElement = require("../models/collection-element");
+const checkAuth = require("../middleware/check-auth");
 const express = require("express");
 
 const router = express.Router();
@@ -11,7 +12,7 @@ router.get("/test", (req, res, next) => {
 });
 
 //GET ALL ELEMENTS
-router.get("", (req, res, next) => {
+router.get("", checkAuth, (req, res, next) => {
   collectionElement.find().then((documents) => {
     console.log(documents);
     return res.status(200).json({
@@ -22,21 +23,21 @@ router.get("", (req, res, next) => {
 });
 
 //ADD NEW ELEMENT
-router.post("", (req, res, next) => {
+router.post("", checkAuth, (req, res, next) => {
   console.log("Ez itt a backend");
-
+  console.log(req.userData.userId);
   const element = new collectionElement({
     title: req.body.title,
     platform: req.body.platform,
     about: req.body.about,
     added: req.body.added,
-    creator: "62344b96cb60ff3d8ca38d26"
+    creator: req.userData.userId
   });
 
   element
     .save()
     .then((createdElement) => {
-      console.log("Element added " + element._id);
+      //console.log("Element added " + element._id);
       res.status(201).json({
         message: "Element added successfully!",
       });

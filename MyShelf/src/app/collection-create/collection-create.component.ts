@@ -29,7 +29,7 @@ export class CollectionCreateComponent implements OnInit {
 
   onSaveElement() {
     if (this.form.invalid) {
-      //console.log('Something wrong with the form!');
+      console.log('Something wrong with the form!');
       return;
     }
 
