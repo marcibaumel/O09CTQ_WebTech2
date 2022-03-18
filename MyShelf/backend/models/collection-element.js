@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+
 const collectionElementSchema = mongoose.Schema({
   title: { type: String, required: true },
   platform: { type: String, default: "No content" },
