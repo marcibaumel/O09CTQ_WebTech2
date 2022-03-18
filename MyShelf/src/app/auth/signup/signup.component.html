@@ -3,7 +3,7 @@
     <mat-card-title>Signup</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form #signupForm="ngForm">
+    <form (submit)="onSignup(signup)" #signup="ngForm">
       <mat-form-field>
         <input
           matInput
