@@ -22,7 +22,7 @@ router.get("", checkAuth, (req, res, next) => {
       console.log(documents);
       return res.status(200).json({
         message: "Elements fetched succesfully",
-        collectionElement: documents,
+        collectionElement: documents
       });
     });
 });
@@ -30,7 +30,7 @@ router.get("", checkAuth, (req, res, next) => {
 //ADD NEW ELEMENT
 router.post("", checkAuth, (req, res, next) => {
   console.log("Ez itt a backend");
-  console.log(req.userData.userId);
+  //console.log(req.userData.userId);
   const element = new collectionElement({
     title: req.body.title,
     platform: req.body.platform,

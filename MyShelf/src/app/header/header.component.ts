@@ -20,7 +20,8 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this,this.userIsAuthenticated = this.authService.getIsAuth();
+
+    this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListnerSubs = this.authService.getAuthStatusListnere().subscribe(isAuthenticated => {
       this.userIsAuthenticated = isAuthenticated;
     });

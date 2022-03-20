@@ -7,29 +7,28 @@ import { CollectionServices } from '../services/collection.service';
 @Component({
   selector: 'app-collection-search',
   templateUrl: './collection-search.component.html',
-  styleUrls: ['./collection-search.component.css']
+  styleUrls: ['./collection-search.component.css'],
 })
-
 export class CollectionSearchComponent implements OnInit, OnDestroy {
-
   searchInput: string;
-
+  successfulSearch: boolean;
   elementPlatform: CollectionElementPlatform;
-  collectionElements: CollectionElement[]= [];
+  collectionElements: CollectionElement[] = [];
+  searchedCollectionElements: CollectionElement[] = [];
   private collectionSub: Subscription;
 
-  onDelete(elementId: string){
+  onDelete(elementId: string) {
     this.collectionService.elementDeleteById(elementId).subscribe(() => {
-      this.collectionService.getCollectionElements()
-    });;
+      this.collectionService.getCollectionElements();
+    });
   }
 
-  dateFormater(givenDate: string):Date{
+  dateFormater(givenDate: string): Date {
     return new Date(givenDate);
   }
 
-  whatType(object: any){
-    return typeof object
+  whatType(object: any) {
+    return typeof object;
   }
 
   constructor(private collectionService: CollectionServices) {}
@@ -39,16 +38,40 @@ export class CollectionSearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    //this.successfulSearch = false;
+    console.log(this.successfulSearch);
     this.collectionService.getCollectionElements();
-    this.collectionSub = this.collectionService.getCollectionElementsUpdateListener()
-    .subscribe((elements: CollectionElement[]) =>{
-      this.collectionElements = elements;
-    })
-
+    this.collectionSub = this.collectionService
+      .getCollectionElementsUpdateListener()
+      .subscribe((elements: CollectionElement[]) => {
+        this.collectionElements = elements;
+      });
   }
 
-  onSearch(){
-    console.log(this.searchInput);
-    this.searchInput = ' ';
+  onSearch() {
+    if(this.searchInput == ""){
+      this.successfulSearch = false;
+      console.log("empty search")
+      return
+    }
+    //console.log(this.successfulSearch);
+
+    this.searchedCollectionElements = [];
+    for (let i = 0; i < this.collectionElements.length; i++) {
+      //console.log(this.collectionElements[i].title);
+      if (this.collectionElements[i].title.includes(this.searchInput)) {
+        this.searchedCollectionElements.push(this.collectionElements[i]);
+      }
+    }
+
+    if(this.searchedCollectionElements.length > 0){
+      this.successfulSearch = true
+    }
+    else{
+      this.successfulSearch = false;
+    }
+    //console.log(this.successfulSearch);
+    //console.log(this.searchedCollectionElements);
+    this.searchInput = '';
   }
 }

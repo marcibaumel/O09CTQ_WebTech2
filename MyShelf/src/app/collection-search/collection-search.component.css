@@ -1,7 +1,30 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
 .search-full-width {
   width: 100%;
 }
 
 .accordion-field{
   margin-top: 2rem;
+}
+
+.search-accordion-field{
+  margin-top: 2rem;
+}
+
+i{
+  margin-left: 3rem;
+}
+
+:host{
+  display: block;
+  margin-top: 1rem;
+}
+
+.info-text{
+  text-align: center;
+}
+
+.spacer{
+  margin-left: 20px;
 }

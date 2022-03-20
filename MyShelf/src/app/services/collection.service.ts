@@ -32,7 +32,7 @@ export class CollectionServices {
 
   getCollectionElements() {
     this.http
-      .get<{ message: string; collectionElement: any }>('http://localhost:3000/api/collection')
+      .get<{ message: string; collectionElement: any}>('http://localhost:3000/api/collection')
       .pipe(
         map((collectionElementData) => {
           return collectionElementData.collectionElement.map((element) => {
